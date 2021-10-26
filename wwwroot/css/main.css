@@ -32,9 +32,9 @@ header {
     flex-wrap: wrap;
     flex-direction: row;
     text-align: center;
-    justify-content: space-between;
-    position: relative;
-    width: 50%;
+    justify-content: center;
+    align-items: center;
+    gap:50px;
 }
 
 .center {
@@ -79,6 +79,22 @@ button {
 .flex-movie-info {
     display: flex;
     flex-wrap: wrap;
-    box-sizing: border-box;
-    align-items: stretch;
+    /* box-sizing: border-box;
+    align-items: stretch;*/
+    flex-direction: row;
+    width: 100%;
+}
+.movie-info {
+    width: 50%;
+}
+.movie-left {
+    width: 50%;
+}
+.flex-container-home {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }

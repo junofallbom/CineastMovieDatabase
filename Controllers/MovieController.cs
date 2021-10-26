@@ -1,4 +1,6 @@
-﻿using CineastMovieDatabase.Models.ViewModels;
+﻿using CineastMovieDatabase.Models;
+using CineastMovieDatabase.Models.ViewModels;
+using CineastMovieDatabase.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +11,13 @@ namespace CineastMovieDatabase.Controllers
 {
     public class MovieController : Controller
     {
+        private MovieDto movie;
+        private IRepository repository;
+
+        public MovieController(IRepository repository)
+        {
+            this.repository = repository;
+        }
         public IActionResult Index()
         {
             var movies = new List<MovieViewModel>
@@ -24,7 +33,7 @@ namespace CineastMovieDatabase.Controllers
                     cmdbRating=4
                 },
             };
-            //ViewData["movies"] = movies;
+            ViewData["movies"] = movies;
 
             return View(movies);
         }

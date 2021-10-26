@@ -12,6 +12,8 @@ namespace CineastMovieDatabase.Repositories
         /// Retrieves a summary of movies
         /// </summary>
         /// <returns></returns>
-        SummaryDto GetSummary();
+
+        Task<List<MovieDto>> GetMovie();
+        //Task<MovieDto> GetMovie();
     }
 }

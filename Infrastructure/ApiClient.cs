@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CineastMovieDatabase.Infrastructure
 {
-    public class ApiClient
+    public class ApiClient : IApiClient
     {
         private readonly HttpClient client = new HttpClient();
 
@@ -26,12 +26,10 @@ namespace CineastMovieDatabase.Infrastructure
                     return data;
                 }
 
-                throw new Exception("Failed connection to api");
-                
+                throw new Exception("Failed connection to api");               
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
                 throw;
             }
            

@@ -1,38 +1,45 @@
-﻿<!-- Search Function -->
-<div id="search-function">
-    <form id="form">
-        <input type="search" id="query" name="q" placeholder="Search movie...">
-        <button>Search</button>
-    </form>
+﻿@model HomeViewModel
+<div class="flex-container-home">
+    <!-- Search Function -->
+    <div class="search-function">
+        <form id="form">
+            <input type="search" id="query" name="q" placeholder="Search movie...">
+            <button>Search</button>
+        </form>
+    </div>
+
+<div class="flex-featured-movies">
+    <!-- Movie 1 -->
+    <section class="movie featured">
+        <header>
+            <h1>Top rated movies 1st place</h1>
+            <h2>@Model.fullMovieList[0].title</h2>
+        </header>
+        <img src=@Model.fullMovieList[0].poster alt="movie1" />
+        <p>@Model.fullMovieList[0].cmdbRating</p>
+    </section>
+
+    <!-- Movie 2-->
+    <section class="movie featured">
+        <header>
+            <h1>Top rated movies 2nd place</h1>
+            <h2>@Model.fullMovieList[1].title</h2>
+        </header>
+        <img src=@Model.fullMovieList[1].poster alt="movie1" />
+        <p>@Model.fullMovieList[1].cmdbRating</p>
+    </section>
+
+    <!-- Movie 3 -->
+    <section class="movie featured">
+        <header>
+            <h1>Top rated movies 3rd place</h1>
+            <h2>@Model.fullMovieList[2].title</h2>
+        </header>
+        <img src=@Model.fullMovieList[2].poster alt="movie1" />
+        <p>@Model.fullMovieList[2].cmdbRating</p>
+    </section>
+</div>
 </div>
 
-
-<section class="movies-row">
-    <div class="flex-featured-movies">
-        <!-- Movie 1 -->
-        <section class="movie featured">
-            <img src="img/titanic.jpg" alt="movie1" />
-            <header>
-                <h2>Movie 1</h2>
-            </header>
-        </section>
-
-        <!-- Movie 2-->
-        <section class="movie featured">
-            <img src="images/pic02.jpg" alt="movie2" />
-            <header>
-                <h2>Movie 2</h2>
-            </header>
-        </section>
-
-        <!-- Movie 3 -->
-        <section class="movie featured">
-            <img src="images/pic03.jpg" alt="movie 3" />
-            <header>
-                <h2>Movie 3</h2>
-            </header>
-        </section>
-    </div>
-</section>
 
 
