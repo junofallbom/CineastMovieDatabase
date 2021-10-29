@@ -20,22 +20,7 @@ namespace CineastMovieDatabase.Controllers
         }
         public IActionResult Index()
         {
-            var movies = new List<MovieViewModel>
-            {
-                new MovieViewModel
-                {
-                    Title="Titanic",
-                    cmdbRating=5
-                },
-                new MovieViewModel
-                {
-                    Title="The Godfather",
-                    cmdbRating=4
-                },
-            };
-            ViewData["movies"] = movies;
-
-            return View(movies);
+            return View();
         }
     }
 }

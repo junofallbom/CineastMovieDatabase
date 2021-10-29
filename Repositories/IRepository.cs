@@ -8,12 +8,8 @@ namespace CineastMovieDatabase.Repositories
 {
     public interface IRepository
     {
-        /// <summary>
-        /// Retrieves a summary of movies
-        /// </summary>
-        /// <returns></returns>
-
-        Task<List<MovieDto>> GetMovie();
-        //Task<MovieDto> GetMovie();
+        Task<List<MovieDto>> GetMovieList();
+        Task<MovieDto> SearchMovieByTitle(string title);
+        //Task<MovieDto> AddMovieToCmdb();
     }
 }
