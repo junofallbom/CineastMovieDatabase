@@ -38,11 +38,12 @@ namespace CineastMovieDatabase.Repositories
             return movieList;
         }
 
-        //public async Task<MovieDto> AddMovieToCmdb(string title)
+        //public async Task<MovieDto> LikeMovie(string title)
         //{
-        //    var movieList = GetMovieList();
+        //    //var movieList = GetMovieList();
 
-        //    await apiClient.GetAsync<MovieDto>($"{baseEndPoint}movie.imdbID");
+        //    //await apiClient.GetAsync<MovieDto>($"{baseEndPoint}movie.imdbID");
+        //    return movie;
         //}
     }
 }

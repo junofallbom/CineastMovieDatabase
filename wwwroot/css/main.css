@@ -8,11 +8,21 @@
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     min-height: 100%;
-    background-color: ghostwhite;
+    /*background-color: ghostwhite;*/
+    background-image: url('../img/cinema.jpg');
+    
 }
 
-h2, h3 {
+h1, h2, h3 {
     color: red;
+    background-color: white;
+    border-radius: 10px;
+    font-family: 'AR BONNIE', sans-serif;
+    border: 1px solid black;
+}
+p {
+    background-color: white;
+    border-radius: 10px;
 }
 
 ul {
@@ -58,6 +68,7 @@ footer {
 a {
     text-decoration: none;
     color: red;
+    font-family: 'AR BONNIE', sans-serif;
 }
 
 button {
@@ -90,6 +101,8 @@ button {
 
 .movie-info {
     width: 50%;
+    background-color: white;
+    border-radius: 10px;
 }
 
 .movie-left {
@@ -110,9 +123,9 @@ button {
     overflow: hidden;
 }
 
-    .movie-plot.active {
-        overflow: visible;
-    }
+.movie-plot.active {
+    overflow: visible;
+}
 
 .read-more.move {
     margin-top: 100px;

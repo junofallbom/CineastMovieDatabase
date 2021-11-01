@@ -14,6 +14,8 @@ namespace CineastMovieDatabase.Controllers
     public class HomeController : Controller
     {
         private IRepository repository;
+        private List<MovieDto> movieList;
+
         public HomeController(IRepository repository)
         {
             this.repository = repository;
@@ -22,7 +24,7 @@ namespace CineastMovieDatabase.Controllers
         {
             try
             {
-                var movieList = await repository.GetMovieList();
+                movieList = await repository.GetMovieList();
                 movieList.Sort((x, y) => y.cmdbRating.CompareTo(x.cmdbRating));
                 var model = new HomeViewModel(movieList);
                 return View(model);
@@ -40,7 +42,19 @@ namespace CineastMovieDatabase.Controllers
         public async Task<ActionResult> FetchMovie(SearchMovieViewModel model)
         {
             var searchedMovie = await repository.SearchMovieByTitle(model.Query);
-            MovieViewModel movieViewModel = new MovieViewModel(searchedMovie);
+            movieList = await repository.GetMovieList();
+            var realMovie = movieList.Find(x => x.imdbID == searchedMovie.imdbID);
+
+            MovieViewModel movieViewModel = null;
+            if (realMovie == null)
+            {
+                 movieViewModel = new MovieViewModel(searchedMovie);
+            }
+            else
+            {
+                movieViewModel = new MovieViewModel(realMovie);
+            }
+            
             return View("~/Views/Movie/Index.cshtml", movieViewModel);
         }
     }

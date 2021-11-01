@@ -6,9 +6,22 @@
             <img src=@Model.SearchedMovie.poster alt="Searched movie" />
             <h3>CMDd Rating</h3>
             <p>@Model.SearchedMovie.cmdbRating</p>
-            @*<button class="add-movie">Add to CMDb</button>*@
             <img class="thumbs-up" src=~/img/thumbs-up.png alt="Searched movie" onclick="addMovie(this)" />
             <img class="thumbs-down" src=~/img/thumbs-down.png alt="Searched movie" />
+            @using (Html.BeginForm("LikeMovie", "Movie", FormMethod.Post))
+            {
+                @Html.Value("Like")
+                <form id="form">
+                    <button @Html.Value("Like") value="Like">Like</button>
+                </form>
+            }
+            @using (Html.BeginForm("LikeMovie", "Movie", FormMethod.Post))
+            {
+                @Html.TextBox("Query")
+                <form id="form">
+                    <button>Dislike</button>
+                </form>
+            }
         </div>
         <div class="movie-info">
             <h3>Plot</h3>
@@ -17,7 +30,7 @@
             </div>
             @*<button onclick="changeButtonText()" class="read-more">Read More</button>*@
                    <button class="read-more">
-                Read More
+                Read More/Less...
             </button>
         </div>
     </div>

@@ -22,5 +22,17 @@ namespace CineastMovieDatabase.Controllers
         {
             return View();
         }
+
+
+        [HttpPost]
+        public async Task<ActionResult> LikeMovie(SearchMovieViewModel model)
+        {
+            //var likedMovie = await repository.LikeMovie();
+            //MovieViewModel movieViewModel = new MovieViewModel(likedMovie);
+            //return View("~/Views/Movie/Index.cshtml", movieViewModel);
+            return null;
+        }
+
+
     }
 }
