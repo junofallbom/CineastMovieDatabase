@@ -9,22 +9,20 @@
     <!-- Header -->
     <div id="header-wrapper">
         <header id="header" class="container">
-
             <!-- Logo -->
-            <div id="logo-id">
                 <h1 class="logo">CMDB</h1>
-                <span>The Movie Database for Cineasts</span>
-            </div>
+                <span>The Movie Database for Cineasts</span>       
         </header>
     </div>
-
-    @using (Html.BeginForm("FetchMovie", "Home", FormMethod.Post))
-    {
-        @Html.TextBox("Query")
-        <form id="form">
-            <button>Search</button>
-        </form>
-    }
+    <div class="search-form">
+        @using (Html.BeginForm("SearchMovie", "Home", FormMethod.Post))
+        {
+            @Html.TextBox("Query")
+            <form id="form">
+                <button>Search</button>
+            </form>
+        }
+    </div>
 
     @RenderBody()
 
@@ -66,6 +64,7 @@
         <script type="text/javascript"
                 src="~/js/main.js">
         </script>
+        </div>
 </body>
 </html>
 

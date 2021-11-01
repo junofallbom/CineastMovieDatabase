@@ -1,28 +1,61 @@
-.logo {
+#header {
     font-family: 'AR BONNIE', sans-serif;
     color: red;
     background-color: white;
     text-decoration: none;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.logo {
+    margin-right: 10px;
 }
 
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     min-height: 100%;
-    /*background-color: ghostwhite;*/
     background-image: url('../img/cinema.jpg');
-    
+    margin: 0px;
+    padding: 0px;
 }
 
-h1, h2, h3 {
-    color: red;
-    background-color: white;
-    border-radius: 10px;
-    font-family: 'AR BONNIE', sans-serif;
-    border: 1px solid black;
+.search-form {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
-p {
+.top-3-flex {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#top-3 {
+    border-radius:10px;
+    padding: 10px;
+}
+
+h1 {
+    color: red;
+    font-family: 'AR BONNIE', sans-serif;
     background-color: white;
-    border-radius: 10px;
+}
+
+h2, h3 {
+    color: red;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+h2 {
+    max-width: 280px;
+    margin: 0px;
 }
 
 ul {
@@ -39,20 +72,11 @@ header {
     background-color: white;
 }
 
-.flex-featured-movies {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-}
 
 .center {
     display: flex;
     justify-content: space-between;
-    align-items: column;
+    align-items:center;
     max-width: 100%;
     margin-top: 30px;
     margin-bottom: 30px;
@@ -62,13 +86,13 @@ footer {
     background-color: white;
     color: black;
     text-align: center;
-    margin-bottom: 0px;
+    margin-bottom: -16px;
 }
 
 a {
     text-decoration: none;
     color: red;
-    font-family: 'AR BONNIE', sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 button {
@@ -84,42 +108,47 @@ button {
     font-size: 16px;
 }
 
-    button:hover {
-        border: 2px solid red;
-        background-color: white;
-        color: red;
-    }
+button:hover {
+     border: 2px solid red;
+     background-color: white;
+     color: red;
+}
 
 .flex-movie-info {
     display: flex;
     flex-wrap: wrap;
-    /* box-sizing: border-box;
-    align-items: stretch;*/
     flex-direction: row;
     width: 100%;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
 }
 
-.movie-info {
-    width: 50%;
+.movie-info-right {
+    max-width: 20%;
     background-color: white;
     border-radius: 10px;
+    margin:20px;
 }
 
-.movie-left {
-    width: 50%;
+.movie-info-left {
+    background-color: white;
+    margin: 20px;
+    border-radius: 10px;
 }
 
 .flex-container-home {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
     text-align: center;
     justify-content: center;
     align-items: center;
+    flex-direction: row;
+    gap: 50px;
 }
 
 .movie-plot {
-    height: 2.3rem;
+    height: 23px;
     overflow: hidden;
 }
 
@@ -129,4 +158,10 @@ button {
 
 .read-more.move {
     margin-top: 100px;
+}
+
+.movie-featured {
+    background-color: white;
+    margin: 10px;
+    border-radius:5%;
 }

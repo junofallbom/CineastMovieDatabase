@@ -28,35 +28,10 @@ namespace CineastMovieDatabase.Infrastructure
 
                 throw new Exception("Failed connection to api");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw;
             }
         }
-           
-        //}
-        //public async Task<T> PostAsync<T>(string endpoint)
-        //{
-        //    var request = new HttpRequestMessage(HttpMethod.Post, endpoint);
-        //    try
-        //    {
-        //        using var response = await client.SendAsync(request);
-
-        //        if (response.StatusCode == HttpStatusCode.OK)
-        //        {
-        //            var responseJson = await response.Content.ReadAsStringAsync();
-        //            var data = JsonConvert.DeserializeObject<T>(responseJson);
-        //            return data;
-        //        }
-
-        //        throw new Exception("Failed connection to api");
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        throw;
-        //    }
-
-        //}
-
     }
 }

@@ -9,5 +9,6 @@ namespace CineastMovieDatabase.Models.ViewModels
     {
         public string Query { get; set; }
         public string Like { get; set; }
+        public string ImdbId { get; set; }
     }
 }

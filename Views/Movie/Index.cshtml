@@ -1,38 +1,33 @@
 ﻿@model MovieViewModel
-    <div class="flex-movie-info">
+<div class="flex-movie-info">
 
-        <div class="movie-left">
-            <h1>@Model.SearchedMovie.title</h1>
-            <img src=@Model.SearchedMovie.poster alt="Searched movie" />
-            <h3>CMDd Rating</h3>
-            <p>@Model.SearchedMovie.cmdbRating</p>
-            <img class="thumbs-up" src=~/img/thumbs-up.png alt="Searched movie" onclick="addMovie(this)" />
-            <img class="thumbs-down" src=~/img/thumbs-down.png alt="Searched movie" />
-            @using (Html.BeginForm("LikeMovie", "Movie", FormMethod.Post))
-            {
-                @Html.Value("Like")
-                <form id="form">
-                    <button @Html.Value("Like") value="Like">Like</button>
-                </form>
-            }
-            @using (Html.BeginForm("LikeMovie", "Movie", FormMethod.Post))
-            {
-                @Html.TextBox("Query")
-                <form id="form">
-                    <button>Dislike</button>
-                </form>
-            }
-        </div>
-        <div class="movie-info">
-            <h3>Plot</h3>
-            <div class="movie-plot">
-                @Model.SearchedMovie.plot
-            </div>
-            @*<button onclick="changeButtonText()" class="read-more">Read More</button>*@
-                   <button class="read-more">
-                Read More/Less...
-            </button>
-        </div>
+    <div class="movie-info-left">
+        <h1>@Model.SearchedMovie.title</h1>
+        <img src=@Model.SearchedMovie.poster alt="Searched movie" />
+        <h3>CMDd Rating</h3>
+        <p>@Model.SearchedMovie.cmdbRating</p>
+        @*<img class="thumbs-up" src=~/img/thumbs-up.png alt="Searched movie" onclick="addMovie(this)" />
+        <img class="thumbs-down" src=~/img/thumbs-down.png alt="Searched movie" />*@
+        @using (Html.BeginForm("LikeMovie", "Movie", new { ImdbId = Model.SearchedMovie.imdbID }, FormMethod.Post))
+        {
+            <form id="form">
+                @Html.Value(Model.SearchedMovie.imdbID)
+                <button type="submit" value=like name="like">Like</button>
+                <button type="submit" value=dislike name="dislike">Dislike</button>
+            </form>
+        }
+
     </div>
+    <div class="movie-info-right">
+        <h3>Plot</h3>
+        <div class="movie-plot">
+            @Model.SearchedMovie.plot
+        </div>
+        @*<button onclick="changeButtonText()" class="read-more">Read More</button>*@
+        <button class="read-more">
+            Read More/Less...
+        </button>
+    </div>
+</div>
 
-    
+

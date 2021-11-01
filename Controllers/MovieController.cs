@@ -11,7 +11,7 @@ namespace CineastMovieDatabase.Controllers
 {
     public class MovieController : Controller
     {
-        private MovieDto movie;
+        
         private IRepository repository;
 
         public MovieController(IRepository repository)
@@ -27,12 +27,9 @@ namespace CineastMovieDatabase.Controllers
         [HttpPost]
         public async Task<ActionResult> LikeMovie(SearchMovieViewModel model)
         {
-            //var likedMovie = await repository.LikeMovie();
-            //MovieViewModel movieViewModel = new MovieViewModel(likedMovie);
-            //return View("~/Views/Movie/Index.cshtml", movieViewModel);
-            return null;
+            var likedMovie = await repository.LikeMovie(model.Like, model.ImdbId);
+            MovieViewModel movieViewModel = new MovieViewModel(likedMovie);
+            return View("~/Views/Movie/Index.cshtml", movieViewModel); 
         }
-
-
     }
 }

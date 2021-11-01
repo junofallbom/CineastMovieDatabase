@@ -38,13 +38,19 @@ namespace CineastMovieDatabase.Repositories
             return movieList;
         }
 
-        //public async Task<MovieDto> LikeMovie(string title)
-        //{
-        //    //var movieList = GetMovieList();
-
-        //    //await apiClient.GetAsync<MovieDto>($"{baseEndPoint}movie.imdbID");
-        //    return movie;
-        //}
+        public async Task<MovieDto> LikeMovie(string like, string id)
+        {
+            var likeString = $"{baseEndPoint}/{id}/{like}";
+            var movie = await apiClient.GetAsync<MovieDto>(likeString);
+            var result = await apiClient.GetAsync<MovieDto>($"http://www.omdbapi.com/?i=" + movie.imdbID + "&apikey=296ed584");
+            movie.plot = result.plot;
+            movie.title = result.title;
+            movie.actors = result.actors;
+            movie.poster = result.poster;
+            movie.ratings = result.ratings;
+            movie.cmdbRating = movie.numberOfLikes - movie.numberOfDislikes;
+            return movie;
+        }
     }
 }
 

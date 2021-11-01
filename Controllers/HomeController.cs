@@ -39,7 +39,7 @@ namespace CineastMovieDatabase.Controllers
         }
     
         [HttpPost]
-        public async Task<ActionResult> FetchMovie(SearchMovieViewModel model)
+        public async Task<ActionResult> SearchMovie(SearchMovieViewModel model)
         {
             var searchedMovie = await repository.SearchMovieByTitle(model.Query);
             movieList = await repository.GetMovieList();

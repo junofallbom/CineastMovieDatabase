@@ -1,40 +1,34 @@
 ﻿@model HomeViewModel
-        <div class="flex-container-home">
-        <div class="flex-featured-movies">
-            <!-- Movie 1 -->
-            <section class="movie featured">
-                <h1>Top 3 Rated Movies on CMDb</h1>
-                <header>
-                    <h2>1st place</h2>
-                    <h2>@Model.fullMovieList[0].title</h2>
-                </header>
-                <img src=@Model.fullMovieList[0].poster alt="movie1" />
-                <h3>CMDd Rating</h3>
-                <p>@Model.fullMovieList[0].cmdbRating</p>
-            </section>
+    <div class="top-3-flex">
+        <h1 id="top-3">Top 3 Rated Movies on CMDb</h1>
+    </div>
+    <div class="flex-container-home">
+        <!-- Movie 1 -->
+        <section class="movie-featured">
+            <h2>1st place</h2>
+            <h2>@Model.fullMovieList[0].title</h2>
+            <img src=@Model.fullMovieList[0].poster alt="movie1" />
+            <h3>CMDd Rating</h3>
+            <p>@Model.fullMovieList[0].cmdbRating</p>
+        </section>
 
-            <!-- Movie 2-->
-            <section class="movie featured">
-                <header>
-                    <h2>2nd place</h2>
-                    <h2>@Model.fullMovieList[1].title</h2>
-                </header>
-                <img src=@Model.fullMovieList[1].poster alt="movie1" />
-                <h3>CMDd Rating</h3>
-                <p>@Model.fullMovieList[1].cmdbRating</p>
-            </section>
+        <!-- Movie 2-->
+        <section class="movie-featured">
+            <h2>2nd place</h2>
+            <h2>@Model.fullMovieList[1].title</h2>
+            <img src=@Model.fullMovieList[1].poster alt="movie1" />
+            <h3>CMDd Rating</h3>
+            <p>@Model.fullMovieList[1].cmdbRating</p>
+        </section>
 
-            <!-- Movie 3 -->
-            <section class="movie featured">
-                <header>
-                    <h2>3rd place</h2>
-                    <h2>@Model.fullMovieList[2].title</h2>
-                </header>
-                <img src=@Model.fullMovieList[2].poster alt="movie1" />
-                <h3>CMDd Rating</h3>
-                <p>@Model.fullMovieList[2].cmdbRating</p>
-            </section>
-        </div>
+        <!-- Movie 3 -->
+        <section class="movie-featured">
+            <h2>3rd place</h2>
+            <h2>@Model.fullMovieList[2].title</h2>
+            <img src=@Model.fullMovieList[2].poster alt="movie1" />
+            <h3>CMDd Rating</h3>
+            <p>@Model.fullMovieList[2].cmdbRating</p>
+        </section>
     </div>
 
 
