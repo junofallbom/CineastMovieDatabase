@@ -19,23 +19,27 @@ namespace CineastMovieDatabase.Repositories
         }
         
         public async Task<MovieDto> SearchMovieByTitle(string title) => await apiClient.GetAsync<MovieDto>($"{baseEndPointImdb}&t={title}&plot=full");
-        
+
         public async Task<List<MovieDto>> GetMovieList()
         {
-            await Task.Delay(0);
             var movieList = await apiClient.GetAsync<List<MovieDto>>($"{baseEndPoint}/Movie");
 
-            foreach (var movie in movieList)
-            {
-                var result = await apiClient.GetAsync<MovieDto>($"http://www.omdbapi.com/?i=" + movie.imdbID + "&apikey=296ed584");
-                movie.plot = result.plot;
-                movie.title = result.title;
-                movie.actors = result.actors;
-                movie.poster = result.poster;
-                movie.ratings = result.ratings;
-                movie.cmdbRating = movie.numberOfLikes - movie.numberOfDislikes;
-            }
+            //List<Task<MovieDto>> listOfTasks = new List<Task<MovieDto>>();
+
+            await Task.WhenAll(movieList.Select(movie => DoAsync(movie)));
             return movieList;
+        }
+
+        public async Task<MovieDto> DoAsync(MovieDto movie)
+        {
+            var result = await apiClient.GetAsync<MovieDto>($"http://www.omdbapi.com/?i=" + movie.imdbID + "&apikey=296ed584");
+            movie.plot = result.plot;
+            movie.title = result.title;
+            movie.actors = result.actors;
+            movie.poster = result.poster;
+            movie.ratings = result.ratings;
+            movie.cmdbRating = movie.numberOfLikes - movie.numberOfDislikes;
+            return movie;
         }
 
         public async Task<MovieDto> LikeMovie(string like, string id)

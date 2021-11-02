@@ -8,15 +8,18 @@
         <p>@Model.SearchedMovie.cmdbRating</p>
         @*<img class="thumbs-up" src=~/img/thumbs-up.png alt="Searched movie" onclick="addMovie(this)" />
         <img class="thumbs-down" src=~/img/thumbs-down.png alt="Searched movie" />*@
-        @using (Html.BeginForm("LikeMovie", "Movie", new { ImdbId = Model.SearchedMovie.imdbID }, FormMethod.Post))
+        @*@using (Html.BeginForm("LikeMovie", "Movie", new { ImdbId = Model.SearchedMovie.imdbID }, FormMethod.Post))
         {
             <form id="form">
                 @Html.Value(Model.SearchedMovie.imdbID)
                 <button type="submit" value=like name="like">Like</button>
                 <button type="submit" value=dislike name="dislike">Dislike</button>
             </form>
-        }
-
+        }*@
+        <form id="form" onsubmit="likeMovie()">
+            <button class="thumbs-up" value=like type="submit">Like</button>
+            <button class="thumbs-down" value=dislike type="submit">Dislike</button>
+        </form>
     </div>
     <div class="movie-info-right">
         <h3>Plot</h3>
