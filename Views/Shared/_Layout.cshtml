@@ -7,22 +7,20 @@
 </head>
 <body>
     <!-- Header -->
-    <div id="header-wrapper">
         <header id="header" class="container">
             <!-- Logo -->
-                <h1 class="logo">CMDB</h1>
-                <span>The Movie Database for Cineasts</span>       
+            <h1 class="logo">CMDB</h1>
+            <span>The Movie Database for Cineasts</span>
+            <div class="search-form">
+                @using (Html.BeginForm("SearchMovie", "Home", FormMethod.Post))
+                {
+                    @Html.TextBox("Query")
+                    <form id="form">
+                        <button>Search</button>
+                    </form>
+                }
+            </div>
         </header>
-    </div>
-    <div class="search-form">
-        @using (Html.BeginForm("SearchMovie", "Home", FormMethod.Post))
-        {
-            @Html.TextBox("Query")
-            <form id="form">
-                <button>Search</button>
-            </form>
-        }
-    </div>
 
     @RenderBody()
 

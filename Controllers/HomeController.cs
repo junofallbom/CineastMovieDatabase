@@ -25,8 +25,8 @@ namespace CineastMovieDatabase.Controllers
             try
             {
                 movieList = await repository.GetMovieList();
-                movieList.Sort((x, y) => y.cmdbRating.CompareTo(x.cmdbRating));
-                var model = new HomeViewModel(movieList);
+               // movieList.Sort((x, y) => y.cmdbRating.CompareTo(x.cmdbRating));
+                var model = new HomeViewModel(movieList, null);
                 return View(model);
             }
             catch (System.Exception)
@@ -38,24 +38,35 @@ namespace CineastMovieDatabase.Controllers
             }
         }
     
-        [HttpPost]
         public async Task<ActionResult> SearchMovie(SearchMovieViewModel model)
         {
             var searchedMovie = await repository.SearchMovieByTitle(model.Query);
-            movieList = await repository.GetMovieList();
-            var realMovie = movieList.Find(x => x.imdbID == searchedMovie.imdbID);
+            if (searchedMovie.error != null)
+            {
+                movieList = await repository.GetMovieList();
+                var errorModel = new HomeViewModel(movieList, searchedMovie.error);
+
+                return View("~/Views/Home/Index.cshtml", errorModel);
+            }
+            else
+            {
+ var movie = await repository.GetMovie(searchedMovie.imdbID);
 
             MovieViewModel movieViewModel = null;
-            if (realMovie == null)
+            if (movie == null)
             {
                  movieViewModel = new MovieViewModel(searchedMovie);
             }
             else
             {
-                movieViewModel = new MovieViewModel(realMovie);
+                searchedMovie.numberOfLikes = movie.numberOfLikes;
+                searchedMovie.numberOfDislikes = movie.numberOfDislikes;
+                movieViewModel = new MovieViewModel(searchedMovie);
             }
             
             return View("~/Views/Movie/Index.cshtml", movieViewModel);
+            }
+           
         }
     }
 }

@@ -17,6 +17,7 @@ namespace CineastMovieDatabase.Models
         public List<RatingsDto> ratings { get; set; }
         public string poster { get; set; }
         public int cmdbRating { get; set; }
+        public string error { get; set; }
 
     }
 }

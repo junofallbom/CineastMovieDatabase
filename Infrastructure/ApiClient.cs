@@ -28,7 +28,7 @@ namespace CineastMovieDatabase.Infrastructure
 
                 throw new Exception("Failed connection to api");
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 throw;
             }

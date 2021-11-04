@@ -7,7 +7,6 @@ namespace CineastMovieDatabase.Models.ViewModels
 {
     public class MovieViewModel
     {
-        
         public MovieDto SearchedMovie { get; set; }
 
         public MovieViewModel(MovieDto movie)

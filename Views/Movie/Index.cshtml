@@ -1,35 +1,48 @@
 ﻿@model MovieViewModel
 <div class="flex-movie-info">
-
     <div class="movie-info-left">
-        <h1>@Model.SearchedMovie.title</h1>
         <img src=@Model.SearchedMovie.poster alt="Searched movie" />
-        <h3>CMDd Rating</h3>
-        <p>@Model.SearchedMovie.cmdbRating</p>
-        @*<img class="thumbs-up" src=~/img/thumbs-up.png alt="Searched movie" onclick="addMovie(this)" />
-        <img class="thumbs-down" src=~/img/thumbs-down.png alt="Searched movie" />*@
-        @*@using (Html.BeginForm("LikeMovie", "Movie", new { ImdbId = Model.SearchedMovie.imdbID }, FormMethod.Post))
-        {
-            <form id="form">
-                @Html.Value(Model.SearchedMovie.imdbID)
-                <button type="submit" value=like name="like">Like</button>
-                <button type="submit" value=dislike name="dislike">Dislike</button>
+        <h3>CMDb Rating</h3>
+        <div class="rating-info">
+            <p>Likes @Model.SearchedMovie.numberOfLikes</p>
+            <p>Dislikes @Model.SearchedMovie.numberOfDislikes</p>
+        </div>
+        <div class="movie-featured">
+            @if (@Model.SearchedMovie.ratings.Count != 0)
+            {
+                foreach (var rating in @Model.SearchedMovie.ratings)
+                {
+                    <h3>@rating.source</h3>
+                    <p>@rating.value</p>
+                }
+            }
+            else
+            {
+                <p>Movie is not yet rated</p>
+            }
+        </div>
+        <div class="rating-info">
+            <form id="form" action="javascript:void(0)" onsubmit="likeMovie('@Model.SearchedMovie.imdbID')">
+                <button class="thumbs-up" value=like type="submit">Like</button>
             </form>
-        }*@
-        <form id="form" onsubmit="likeMovie()">
-            <button class="thumbs-up" value=like type="submit">Like</button>
-            <button class="thumbs-down" value=dislike type="submit">Dislike</button>
-        </form>
+            <form id="form" action="javascript:void(0)" onsubmit="dislikeMovie('@Model.SearchedMovie.imdbID')">
+                <button class="thumbs-down" value=dislike type="submit">Dislike</button>
+            </form>
+        </div>
     </div>
     <div class="movie-info-right">
-        <h3>Plot</h3>
-        <div class="movie-plot">
-            @Model.SearchedMovie.plot
+        <div class="plot-info">
+            <h1>@Model.SearchedMovie.title</h1>
+            <h3>Actors</h3>
+            <p>@Model.SearchedMovie.actors</p>
+            <h3>Plot</h3>
+            <div class="movie-plot">
+                @Model.SearchedMovie.plot
+            </div>
+            <button class="read-more">
+                Read More
+            </button>
         </div>
-        @*<button onclick="changeButtonText()" class="read-more">Read More</button>*@
-        <button class="read-more">
-            Read More/Less...
-        </button>
     </div>
 </div>
 

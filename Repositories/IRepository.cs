@@ -10,6 +10,7 @@ namespace CineastMovieDatabase.Repositories
     {
         Task<List<MovieDto>> GetMovieList();
         Task<MovieDto> SearchMovieByTitle(string title);
-        Task<MovieDto> LikeMovie(string like, string id);
+        Task<MovieDto> GetMovie(string id);
+        
     }
 }

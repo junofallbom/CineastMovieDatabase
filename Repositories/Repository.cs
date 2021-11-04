@@ -20,33 +20,19 @@ namespace CineastMovieDatabase.Repositories
         
         public async Task<MovieDto> SearchMovieByTitle(string title) => await apiClient.GetAsync<MovieDto>($"{baseEndPointImdb}&t={title}&plot=full");
 
+        public async Task<MovieDto> GetMovie(string id) => await apiClient.GetAsync<MovieDto>($"{baseEndPoint}/Movie/{id}");
+
         public async Task<List<MovieDto>> GetMovieList()
         {
-            var movieList = await apiClient.GetAsync<List<MovieDto>>($"{baseEndPoint}/Movie");
-
-            //List<Task<MovieDto>> listOfTasks = new List<Task<MovieDto>>();
-
+            var top3Movies = "/Toplist?sort=desc&count=3&type=ratings";
+            var movieList = await apiClient.GetAsync<List<MovieDto>>($"{baseEndPoint}{top3Movies}");
             await Task.WhenAll(movieList.Select(movie => DoAsync(movie)));
             return movieList;
         }
 
-        public async Task<MovieDto> DoAsync(MovieDto movie)
+        private async Task<MovieDto> DoAsync(MovieDto movie)
         {
-            var result = await apiClient.GetAsync<MovieDto>($"http://www.omdbapi.com/?i=" + movie.imdbID + "&apikey=296ed584");
-            movie.plot = result.plot;
-            movie.title = result.title;
-            movie.actors = result.actors;
-            movie.poster = result.poster;
-            movie.ratings = result.ratings;
-            movie.cmdbRating = movie.numberOfLikes - movie.numberOfDislikes;
-            return movie;
-        }
-
-        public async Task<MovieDto> LikeMovie(string like, string id)
-        {
-            var likeString = $"{baseEndPoint}/{id}/{like}";
-            var movie = await apiClient.GetAsync<MovieDto>(likeString);
-            var result = await apiClient.GetAsync<MovieDto>($"http://www.omdbapi.com/?i=" + movie.imdbID + "&apikey=296ed584");
+            var result = await apiClient.GetAsync<MovieDto>($"http://www.omdbapi.com/?i=" + movie.imdbID + "&apikey=296ed584&plot=full");
             movie.plot = result.plot;
             movie.title = result.title;
             movie.actors = result.actors;

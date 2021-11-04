@@ -7,44 +7,39 @@ const downVote = document.getElementsByClassName('thumbs-down');
 buttonRead[0].addEventListener("click", function () {
     text[0].classList.toggle("active");
 
-    //if (this.innerHTML == "Read More") {
-    //    this.innerHTML = "Read Less";
-    //}
-    //else {
-    //    this.innerHTML = "Read More";
-    //}
+    if (this.innerHTML == "Read Less") {
+        this.innerHTML = "Read More";
+    }
+    else {
+        this.innerHTML = "Read Less";
+    }
 
     this.className = this.className + " move";
 });
 
-//upVote[0].addEventListener("click", function () {
-//    var xButtonValue = $(this).val();
-//    console.log("hej");
-//    $.post("Home.LikeMovie",
-//        {
-//            value: xButtonValue,
-//        },
-//        function (data, status) {
-//            alert("Data: " + data + "\nStatus: " + status);
-//        });
-//});
 
-//downVote[0].addEventListener("click", function () {
-//    fetch("https://grupp9.dsvkurs.miun.se/api/" + movie.imdbID + "/dislike")
-//});
-
-//$(upVote).click(function () {
-        
-//    });
-
-function likeMovie() {
-    const url = "https://grupp9.dsvkurs.miun.se/api/" + movie.imdbID + "/like";
-    console.log(url);
+async function likeMovie(id) {
+    const url = "https://grupp9.dsvkurs.miun.se/api/" + id + "/like";
+    const response = await fetch(url);
+    const movie = await response.json();
+    document.getElementById('like').innerHTML = movie.numberOfLikes;
 
 };
+async function dislikeMovie(id) {
+    const url = "https://grupp9.dsvkurs.miun.se/api/" + id + "/dislike";
+    const response = await fetch(url);
+    const movie = await response.json();
+    document.getElementById('dislike').innerHTML = movie.numberOfDislikes;
+};
 
-//document.querySelector('#upvoteButton').onclick = function () { like() };
-//function like() {
+//downVote[0].onclick = function () {
+//    downVote.disabled = true;
+//}
+
+//upVote[0].onclick = function () {
+//    upVote.disabled = true;
+//}
+
 
    
 
