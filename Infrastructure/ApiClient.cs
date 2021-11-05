@@ -25,10 +25,14 @@ namespace CineastMovieDatabase.Infrastructure
                     var data = JsonConvert.DeserializeObject<T>(responseJson);
                     return data;
                 }
+                if (response.StatusCode == HttpStatusCode.NoContent)
+                {
+                    return default;
+                }
 
-                throw new Exception("Failed connection to api");
+                throw new Exception("Error: " + response.StatusCode.ToString());
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw;
             }

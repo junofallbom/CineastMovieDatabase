@@ -145,7 +145,6 @@ button:hover {
     border-radius: 10px;
     margin: 20px;
     background-color: white;
-    height: 674px;
 }
 
 
@@ -205,6 +204,10 @@ button:hover {
 .movie-featured {
     background-color: white;
     margin: 10px;
-    border-radius:5%;
+    border-radius: 5%;
+    text-align: center;
 }
 
+.button-hidden{
+    opacity: 50%;
+}

@@ -4,8 +4,8 @@
         <img src=@Model.SearchedMovie.poster alt="Searched movie" />
         <h3>CMDb Rating</h3>
         <div class="rating-info">
-            <p>Likes @Model.SearchedMovie.numberOfLikes</p>
-            <p>Dislikes @Model.SearchedMovie.numberOfDislikes</p>
+            <p id="like">Likes @Model.SearchedMovie.numberOfLikes</p>
+            <p id="dislike">Dislikes @Model.SearchedMovie.numberOfDislikes</p>
         </div>
         <div class="movie-featured">
             @if (@Model.SearchedMovie.ratings.Count != 0)

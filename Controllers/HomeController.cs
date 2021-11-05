@@ -25,7 +25,6 @@ namespace CineastMovieDatabase.Controllers
             try
             {
                 movieList = await repository.GetMovieList();
-               // movieList.Sort((x, y) => y.cmdbRating.CompareTo(x.cmdbRating));
                 var model = new HomeViewModel(movieList, null);
                 return View(model);
             }
@@ -50,13 +49,14 @@ namespace CineastMovieDatabase.Controllers
             }
             else
             {
- var movie = await repository.GetMovie(searchedMovie.imdbID);
+                var movie = await repository.GetMovie(searchedMovie.imdbID);
 
-            MovieViewModel movieViewModel = null;
-            if (movie == null)
-            {
-                 movieViewModel = new MovieViewModel(searchedMovie);
-            }
+                MovieViewModel movieViewModel = null;
+            
+                if (movie == null)
+                {
+                     movieViewModel = new MovieViewModel(searchedMovie);
+                }
             else
             {
                 searchedMovie.numberOfLikes = movie.numberOfLikes;
@@ -64,7 +64,7 @@ namespace CineastMovieDatabase.Controllers
                 movieViewModel = new MovieViewModel(searchedMovie);
             }
             
-            return View("~/Views/Movie/Index.cshtml", movieViewModel);
+                return View("~/Views/Movie/Index.cshtml", movieViewModel);
             }
            
         }
