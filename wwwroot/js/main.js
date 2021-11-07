@@ -51,7 +51,6 @@ async function searchMovie() {
         option.text = movie.Title;
         select.appendChild(option);
     });
-
 };
 
 

@@ -141,7 +141,7 @@ button:hover {
 }
 
 .movie-info-right {
-    max-width: 20%;
+    max-width: 30%;
     border-radius: 10px;
     margin: 20px;
     background-color: white;
@@ -198,7 +198,7 @@ button:hover {
 }
 
 .read-more.move {
-    margin-top: 320px;
+    margin-top: 500px;
 }
 
 .movie-featured {

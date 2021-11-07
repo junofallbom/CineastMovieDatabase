@@ -25,7 +25,7 @@ namespace CineastMovieDatabase.Controllers
             try
             {
                 movieList = await repository.GetMovieList();
-                var model = new HomeViewModel(movieList, null);
+                var model = new HomeViewModel(movieList);
                 return View(model);
             }
             catch (System.Exception)
@@ -50,23 +50,19 @@ namespace CineastMovieDatabase.Controllers
             else
             {
                 var movie = await repository.GetMovie(searchedMovie.imdbID);
-
                 MovieViewModel movieViewModel = null;
-            
                 if (movie == null)
                 {
                      movieViewModel = new MovieViewModel(searchedMovie);
                 }
-            else
-            {
-                searchedMovie.numberOfLikes = movie.numberOfLikes;
-                searchedMovie.numberOfDislikes = movie.numberOfDislikes;
-                movieViewModel = new MovieViewModel(searchedMovie);
-            }
-            
+                else
+                {
+                    searchedMovie.numberOfLikes = movie.numberOfLikes;
+                    searchedMovie.numberOfDislikes = movie.numberOfDislikes;
+                    movieViewModel = new MovieViewModel(searchedMovie);
+                }
                 return View("~/Views/Movie/Index.cshtml", movieViewModel);
             }
-           
         }
     }
 }

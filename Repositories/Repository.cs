@@ -41,8 +41,6 @@ namespace CineastMovieDatabase.Repositories
             movie.cmdbRating = movie.numberOfLikes - movie.numberOfDislikes;
             return movie;
         }
-
-
     }
 }
 

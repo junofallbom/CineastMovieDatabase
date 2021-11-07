@@ -13,7 +13,7 @@ namespace CineastMovieDatabase.Models.ViewModels
 
         public string error { get; set; }
 
-        public HomeViewModel(List<MovieDto> movieList, string errorMsg)
+        public HomeViewModel(List<MovieDto> movieList, string errorMsg = null)
         {
             fullMovieList = movieList;
             error = errorMsg;
